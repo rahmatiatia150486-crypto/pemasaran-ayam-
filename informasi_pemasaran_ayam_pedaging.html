@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BroilerPedia - Portal Informasi & Pemasaran Ayam Pedaging Modern</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                        },
+                        amberBrand: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-hero {
+            background: linear-gradient(135deg, rgba(22, 163, 74, 0.95) 0%, rgba(21, 128, 61, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+        }
+        .card-shadow {
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #cbd5e1;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+                    <div class="w-11 h-11 bg-brand-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-brand-600/30">
+                        <i data-lucide="bird" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold text-slate-900 tracking-tight">Broiler<span class="text-brand-600">Pedia</span></span>
+                        <span class="block text-[10px] font-semibold tracking-widest text-slate-400 uppercase">Pemasaran & Bisnis Ayam</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#tren-pasar" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition">Tren & Analisis</a>
+                    <a href="#kalkulator" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition">Simulasi Profit</a>
+                    <a href="#strategi" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition">Strategi Pasar</a>
+                    <a href="#katalog" class="text-sm font-semibold text-slate-600 hover:text-brand-600 transition">Katalog Produk</a>
+                    <a href="#konsultasi" class="inline-flex items-center px-4 py-2.5 rounded-xl text-sm font-bold text-white bg-brand-600 hover:bg-brand-700 transition shadow-md shadow-brand-600/20">
+                        <i data-lucide="phone-call" class="w-4 h-4 mr-2"></i> Konsultasi Pasar
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="p-2 rounded-lg text-slate-600 hover:text-brand-600 hover:bg-slate-100 focus:outline-none">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Nav -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-3">
+            <a href="#tren-pasar" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-600">Tren & Analisis</a>
+            <a href="#kalkulator" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-600">Simulasi Profit</a>
+            <a href="#strategi" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-600">Strategi Pasar</a>
+            <a href="#katalog" class="block py-2 text-base font-semibold text-slate-700 hover:text-brand-600">Katalog Produk</a>
+            <a href="#konsultasi" class="block w-full text-center py-3 rounded-xl font-bold text-white bg-brand-600 hover:bg-brand-700 shadow-md">
+                Konsultasi Pasar
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative text-white gradient-hero py-20 lg:py-28 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20">
+                        <span class="w-2 h-2 rounded-full bg-amberBrand-500 animate-ping"></span>
+                        <span class="text-xs font-semibold tracking-wide uppercase text-amber-300">Pusat Informasi Pemasaran Ayam Broiler</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+                        Optimalkan Penjualan <br>
+                        <span class="text-amber-300">Ayam Pedaging</span> Anda
+                    </h1>
+                    <p class="text-lg text-emerald-50 leading-relaxed max-w-2xl">
+                        Dapatkan wawasan tren harga pasar real-time, simulasi kalkulasi profit interaktif, serta strategi distribusi rantai pasok terkini untuk peternak & pedagang Indonesia.
+                    </p>
+                    <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                        <a href="#kalkulator" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-bold bg-amberBrand-500 hover:bg-amberBrand-600 text-slate-900 transition shadow-lg shadow-amber-500/30">
+                            <i data-lucide="calculator" class="w-5 h-5 mr-2"></i> Simulasi Profit
+                        </a>
+                        <a href="#tren-pasar" class="inline-flex items-center justify-center px-6 py-3.5 rounded-xl font-bold bg-white/10 hover:bg-white/20 border border-white/30 text-white backdrop-blur-md transition">
+                            <i data-lucide="trending-up" class="w-5 h-5 mr-2"></i> Lihat Harga Pasar
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Stats Card -->
+                <div class="lg:col-span-5">
+                    <div class="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+                        <div class="flex justify-between items-center pb-4 border-b border-slate-100">
+                            <h3 class="font-bold text-slate-800 text-lg">Ringkasan Pasar Hari Ini</h3>
+                            <span class="text-xs font-semibold bg-emerald-100 text-brand-700 px-3 py-1 rounded-full">Update Nasional</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                                <span class="text-xs text-slate-500 font-medium block">Rata-rata Livebird</span>
+                                <span class="text-xl font-extrabold text-brand-600 mt-1 block">Rp 23.500 <span class="text-xs font-normal text-slate-400">/kg</span></span>
+                                <span class="text-[11px] text-emerald-600 font-semibold flex items-center mt-1">
+                                    <i data-lucide="arrow-up-right" class="w-3 h-3 mr-0.5"></i> +1.2% minggu ini
+                                </span>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                                <span class="text-xs text-slate-500 font-medium block">Karkas Ayam Utuh</span>
+                                <span class="text-xl font-extrabold text-slate-900 mt-1 block">Rp 36.000 <span class="text-xs font-normal text-slate-400">/kg</span></span>
+                                <span class="text-[11px] text-emerald-600 font-semibold flex items-center mt-1">
+                                    <i data-lucide="arrow-up-right" class="w-3 h-3 mr-0.5"></i> Stabil
+                                </span>
+                            </div>
+                        </div>
+                        <div class="bg-amber-50 rounded-2xl p-4 border border-amber-200/60 flex items-start space-x-3">
+                            <i data-lucide="lightbulb" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+                            <p class="text-xs text-amber-900 font-medium leading-relaxed">
+                                <strong class="font-bold">Tips Pemasaran:</strong> Permintaan pasar modern meningkat 18% untuk varian <em>Boneless Breast (Fillet Dada)</em> menjelang akhir bulan.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFORMASI TREN HARGAS & ANALISIS PASAR -->
+    <section id="tren-pasar" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-600 font-bold text-sm uppercase tracking-wider bg-brand-50 px-3.5 py-1.5 rounded-full">Analisis Data Pasar</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Tren Harga & Rantai Pasok Ayam Pedaging</h2>
+                <p class="text-slate-600 mt-4 text-base">Pantau pergerakan harga komoditas ayam broiler secara transparan untuk menentukan momentum penjualan terbaik.</p>
+            </div>
+
+            <!-- Chart & Region Selector -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+                <div class="lg:col-span-8 bg-slate-50 border border-slate-200/80 rounded-3xl p-6 sm:p-8 card-shadow">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+                        <div>
+                            <h3 class="font-bold text-slate-900 text-lg">Grafik Fluktuasi Harga Ayam Broiler</h3>
+                            <p class="text-xs text-slate-500">Harga rata-rata tingkat peternak (Livebird) vs Eceran</p>
+                        </div>
+                        <select id="region-select" onchange="updateChartData()" class="px-3.5 py-2 rounded-xl bg-white border border-slate-300 text-xs font-semibold text-slate-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            <option value="jawa">Wilayah: Jawa Barat & DKI</option>
+                            <option value="jateng">Wilayah: Jawa Tengah & DIY</option>
+                            <option value="jatim">Wilayah: Jawa Timur</option>
+                            <option value="sumatera">Wilayah: Sumatera</option>
+                        </select>
+                    </div>
+                    <div class="relative w-full h-[320px]">
+                        <canvas id="priceChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Strategic Insights Cards -->
+                <div class="lg:col-span-4 space-y-4">
+                    <div class="bg-brand-50 border border-brand-100 rounded-2xl p-6">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 bg-brand-600 text-white rounded-xl flex items-center justify-center">
+                                <i data-lucide="store" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-base">Pasar B2B (Resto & Horeka)</h4>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Penjualan skala besar dengan kontrak rutin. Membutuhkan spesifikasi bobot seragam (1.2 kg - 1.5 kg) serta kepastian sertifikasi Halal & NKV.
+                        </p>
+                    </div>
+
+                    <div class="bg-amber-50 border border-amber-100 rounded-2xl p-6">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 bg-amber-500 text-white rounded-xl flex items-center justify-center">
+                                <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-base">Pasar Tradisional & B2C</h4>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Penjualan karkas basah harian dengan omset cepat. Sensitif terhadap fluktuasi harga harian, mengandalkan jaringan pedagang lapak.
+                        </p>
+                    </div>
+
+                    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-6">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-10 h-10 bg-blue-600 text-white rounded-xl flex items-center justify-center">
+                                <i data-lucide="snowflake" class="w-5 h-5"></i>
+                            </div>
+                            <h4 class="font-bold text-slate-900 text-base">Modern Retail & Frozen Cut</h4>
+                        </div>
+                        <p class="text-xs text-slate-600 leading-relaxed">
+                            Fokus pada karkas potong (parting) dan boneless beku vacuum. Margin margin keuntungan lebih tinggi dengan daya tahan simpan produk lebih lama.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KALKULATOR / SIMULASI KEUNTUNGAN INTERAKTIF -->
+    <section id="kalkulator" class="py-20 bg-slate-100/70 border-y border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-brand-600 font-bold text-sm uppercase tracking-wider bg-brand-100 px-3.5 py-1.5 rounded-full">Alat Hitung Otomatis</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Simulasi Profit Peternak & Pedagang</h2>
+                <p class="text-slate-600 mt-3 text-base">Hitung estimasi pendapatan bersih penjualan ayam pedaging Anda berdasarkan estimasi tonase, biaya operasional, dan penyusutan.</p>
+            </div>
+
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl border border-slate-100 overflow-hidden">
+                <div class="grid grid-cols-1 md:grid-cols-12">
+                    <!-- Form Input -->
+                    <div class="md:col-span-7 p-6 sm:p-8 space-y-5">
+                        <h3 class="font-bold text-slate-900 text-lg border-b pb-3 flex items-center">
+                            <i data-lucide="sliders" class="w-5 h-5 mr-2 text-brand-600"></i> Input Variable Penjualan
+                        </h3>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5">Jumlah Ayam (Ekor)</label>
+                                <input type="number" id="calc-qty" value="1000" min="1" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none" oninput="calculateProfit()">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5">Rata-rata Bobot (Kg/Ekor)</label>
+                                <input type="number" id="calc-weight" value="1.8" step="0.1" min="0.5" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none" oninput="calculateProfit()">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5">Harga Modal / Beli (Rp/Kg)</label>
+                                <input type="number" id="calc-buy-price" value="21000" step="500" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none" oninput="calculateProfit()">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5">Harga Jual Pasar (Rp/Kg)</label>
+                                <input type="number" id="calc-sell-price" value="25500" step="500" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none" oninput="calculateProfit()">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5">Estimasi Biaya Operasional (Rp)</label>
+                                <input type="number" id="calc-ops-cost" value="1500000" step="50000" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none" oninput="calculateProfit()">
+                                <span class="text-[10px] text-slate-400">Transportasi, Es, Tenaga Kerja</span>
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1.5">Toleransi Susut Bobot (%)</label>
+                                <input type="number" id="calc-shrinkage" value="3" step="0.5" min="0" max="10" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none" oninput="calculateProfit()">
+                                <span class="text-[10px] text-slate-400">Penyusutan selama pengangkutan</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Output Summary -->
+                    <div class="md:col-span-5 bg-gradient-to-br from-slate-900 to-slate-800 text-white p-6 sm:p-8 flex flex-col justify-between">
+                        <div>
+                            <h3 class="font-bold text-emerald-400 text-lg border-b border-slate-700 pb-3 flex items-center">
+                                <i data-lucide="pie-chart" class="w-5 h-5 mr-2"></i> Hasil Simulasi Profit
+                            </h3>
+
+                            <div class="mt-6 space-y-4">
+                                <div>
+                                    <span class="text-xs text-slate-400 block font-medium">Total Bobot Terjual (Setelah Susut)</span>
+                                    <span id="res-total-weight" class="text-lg font-semibold text-slate-200">1.746 Kg</span>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-slate-400 block font-medium">Estimasi Omset Gross</span>
+                                    <span id="res-gross" class="text-lg font-semibold text-slate-200">Rp 44.523.000</span>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-slate-400 block font-medium">Total Biaya (Modal + Operasional)</span>
+                                    <span id="res-total-cost" class="text-lg font-semibold text-slate-200">Rp 39.300.000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 border-t border-slate-700 mt-6">
+                            <span class="text-xs text-emerald-400 font-bold tracking-wider uppercase block">Estimasi Keuntungan Bersih</span>
+                            <span id="res-net-profit" class="text-3xl font-extrabold text-amber-400 mt-1 block">Rp 5.223.000</span>
+                            <span id="res-margin" class="inline-block mt-2 text-xs bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-md font-semibold">Margin Profit: 11.7%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIPS & STRATEGI PEMASARAN EFEKTIF -->
+    <section id="strategi" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-brand-600 font-bold text-sm uppercase tracking-wider bg-brand-50 px-3.5 py-1.5 rounded-full">Panduan Bisnis</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Strategi Pemasaran Ayam Broiler Efektif</h2>
+                <p class="text-slate-600 mt-3 text-base">Tingkatkan nilai jual dan jangkauan pasar dengan menerapkan strategi diferensiasi komoditas berikut.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="w-12 h-12 bg-emerald-100 text-brand-600 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Segmentasi & Value Added</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        Jangan hanya menjual ayam hidup. Lakukan pemotongan karkas (parting 8/10/12) atau <em>fillet boneless</em> untuk menyasar pasar kuliner dan supermarket dengan margin lebih tinggi.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t pt-3 border-slate-200">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-600 mr-2"></i> Ayam Utuh Bersih (Karkas)</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-600 mr-2"></i> Potongan Karkas Pas (Parting)</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-brand-600 mr-2"></i> Boneless Dada & Paha</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="shield-check" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Sertifikasi & Kualitas Produk</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        Kepercayaan konsumen modern terletak pada higienitas. Lengkapi usaha Anda dengan Sertifikasi Halal MUI dan Nomor Kontrol Veteriner (NKV) untuk menembus pasar modern.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t pt-3 border-slate-200">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-amber-600 mr-2"></i> Jaminan Potong Halal</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-amber-600 mr-2"></i> Standar Keamanan NKV</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-amber-600 mr-2"></i> Pengemasan Cold-Chain Vacuum</li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-6 transition duration-300 hover:-translate-y-1 hover:shadow-xl">
+                    <div class="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-5">
+                        <i data-lucide="share-2" class="w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-slate-900 mb-2">Pemasaran Digital & Kontrak</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                        Gunakan media sosial dan platform B2B marketplace lokal untuk mengamankan kontrak pasokan rutin jangka panjang dengan katering, usaha catering, & restoran.
+                    </p>
+                    <ul class="text-xs text-slate-500 space-y-2 border-t pt-3 border-slate-200">
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-blue-600 mr-2"></i> Kontrak Pasokan Langganan</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-blue-600 mr-2"></i> Promosi Digital B2B</li>
+                        <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-blue-600 mr-2"></i> Layanan Pengiriman Terjadual</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KATALOG PRODUK & SPESIFIKASI PEMASARAN -->
+    <section id="katalog" class="py-20 bg-slate-50 border-t border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="text-brand-600 font-bold text-sm uppercase tracking-wider bg-brand-100 px-3.5 py-1.5 rounded-full">Spesifikasi Komoditas</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-3">Katalog Variasi Ayam Pemasaran</h2>
+                </div>
+                <p class="text-slate-500 text-sm mt-3 md:mt-0 max-w-md">Karakteristik dan standar produk ayam pedaging yang paling dicari oleh konsumen dan industri kuliner.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Catalog Item 1 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="h-44 bg-slate-200 relative">
+                        <img src="https://images.unsplash.com/photo-1587593810167-a84920ea0781?auto=format&fit=crop&w=600&q=80" alt="Ayam Utuh Karkas" class="w-full h-full object-cover">
+                        <span class="absolute top-3 right-3 bg-brand-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-full uppercase">Favorit Pasar</span>
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-slate-900 text-base">Ayam Utuh (Karkas Segar)</h4>
+                        <p class="text-xs text-slate-500 mt-1">Tanpa Kepala & Kaki, Tanpa Jeroan.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs">
+                            <span class="text-slate-400 font-medium">Ukuran Standard:</span>
+                            <span class="font-bold text-slate-800">0.8 kg - 1.4 kg</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Catalog Item 2 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="h-44 bg-slate-200 relative">
+                        <img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?auto=format&fit=crop&w=600&q=80" alt="Ayam Parting" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-slate-900 text-base">Ayam Potong (Parting)</h4>
+                        <p class="text-xs text-slate-500 mt-1">Potong 8, 10, atau 12 bagian presisi.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs">
+                            <span class="text-slate-400 font-medium">Target Pasar:</span>
+                            <span class="font-bold text-slate-800">Restoran / Catering</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Catalog Item 3 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="h-44 bg-slate-200 relative">
+                        <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=600&q=80" alt="Boneless Dada" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-slate-900 text-base">Fillet Boneless Dada</h4>
+                        <p class="text-xs text-slate-500 mt-1">Daging dada murni tanpa kulit & tulang.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs">
+                            <span class="text-slate-400 font-medium">Margin Profit:</span>
+                            <span class="font-bold text-emerald-600">Tinggi</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Catalog Item 4 -->
+                <div class="bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-sm hover:shadow-md transition">
+                    <div class="h-44 bg-slate-200 relative">
+                        <img src="https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&w=600&q=80" alt="Ayam Marinasi Beku" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-5">
+                        <h4 class="font-bold text-slate-900 text-base">Ayam Marinasi / Ready Food</h4>
+                        <p class="text-xs text-slate-500 mt-1">Sudah dibumbui, Siap Olah / Goreng.</p>
+                        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs">
+                            <span class="text-slate-400 font-medium">Kemasan:</span>
+                            <span class="font-bold text-slate-800">Vacuum Sealed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORM KONSULTASI & KEMITRAAN -->
+    <section id="konsultasi" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-brand-700 to-brand-600 rounded-3xl p-8 sm:p-12 text-white shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                    <div class="lg:col-span-6 space-y-4">
+                        <span class="text-xs font-bold uppercase tracking-widest text-amber-300 bg-white/10 px-3 py-1 rounded-full">Kemitraan Pemasaran</span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold leading-tight">Ingin Mengembangkan Jaringan Penjualan Ayam Anda?</h2>
+                        <p class="text-emerald-100 text-sm leading-relaxed">
+                            Hubungi tim ahli pemasaran kami untuk konsultasi strategi rantai pasok, kepastian harga pasar, atau bergabung menjadi mitra pemasok terverifikasi.
+                        </p>
+                        <div class="pt-4 space-y-3 text-sm">
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-amber-300"></i>
+                                <span>Akses langsung ke jaringan pembeli skala besar (B2B)</span>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i data-lucide="check-circle" class="w-5 h-5 text-amber-300"></i>
+                                <span>Pendampingan pemenuhan standar higienis & NKV</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-6">
+                        <div class="bg-white text-slate-900 rounded-2xl p-6 sm:p-8 shadow-lg">
+                            <!-- Alert Container -->
+                            <div id="form-alert" class="hidden mb-4 p-4 rounded-xl text-xs font-semibold"></div>
+
+                            <form id="consultationForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Nama Lengkap</label>
+                                    <input type="text" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                                </div>
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-700 mb-1">Peran Bisnis</label>
+                                        <select class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                                            <option>Peternak Broiler</option>
+                                            <option>Pedagang Grosir / Agent</option>
+                                            <option>Pemilik Restoran / Catering</option>
+                                            <option>Lainnya</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-xs font-bold text-slate-700 mb-1">No. WhatsApp</label>
+                                        <input type="tel" required placeholder="0812xxxxxxxx" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                                    </div>
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 mb-1">Pesan / Pertanyaan Pemasaran</label>
+                                    <textarea rows="3" required placeholder="Tuliskan kebutuhan pasokan atau pertanyaan Anda..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-brand-500 focus:outline-none"></textarea>
+                                </div>
+                                <button type="submit" class="w-full py-3.5 bg-amberBrand-500 hover:bg-amberBrand-600 font-bold text-slate-900 rounded-xl text-sm transition shadow-md shadow-amber-500/20">
+                                    Kirim Pengajuan Konsultasi
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+                <div class="space-y-3">
+                    <div class="flex items-center space-x-2 text-white">
+                        <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center">
+                            <i data-lucide="bird" class="w-5 h-5"></i>
+                        </div>
+                        <span class="text-lg font-bold">BroilerPedia</span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-400">
+                        Platform media & informasi pemasaran ayam pedaging terintegrasi pertama di Indonesia. Membantu memperkuat ekosistem peternakan nasional.
+                    </p>
+                </div>
+                <div>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-3">Tautan Cepat</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><a href="#tren-pasar" class="hover:text-white transition">Tren Harga Pasar</a></li>
+                        <li><a href="#kalkulator" class="hover:text-white transition">Kalkulator Profit</a></li>
+                        <li><a href="#strategi" class="hover:text-white transition">Strategi Pemasaran</a></li>
+                        <li><a href="#katalog" class="hover:text-white transition">Spesifikasi Karkas</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-3">Standar Kualitas</h5>
+                    <ul class="space-y-2 text-xs">
+                        <li><span class="text-slate-400">Sertifikasi Halal MUI</span></li>
+                        <li><span class="text-slate-400">Nomor Kontrol Veteriner (NKV)</span></li>
+                        <li><span class="text-slate-400">Standard Cold-Chain Storage</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h5 class="text-white text-xs font-bold uppercase tracking-wider mb-3">Kontak Layanan</h5>
+                    <p class="text-xs text-slate-400">Email: info@broilerpedia.id</p>
+                    <p class="text-xs text-slate-400 mt-1">Hotline: +62 812-3456-7890</p>
+                    <p class="text-xs text-slate-400 mt-1">Jakarta, Indonesia</p>
+                </div>
+            </div>
+            <div class="pt-8 border-t border-slate-800 text-center text-xs text-slate-500">
+                <p>&copy; 2026 BroilerPedia. Seluruh hak cipta dilindungi undang-undang.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Chart.js Logic
+        let priceChart;
+        const chartDataSets = {
+            jawa: {
+                labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'],
+                livebird: [22500, 23000, 23200, 23000, 23500, 23800, 24000],
+                karkas: [34500, 35000, 35200, 35000, 36000, 36500, 37000]
+            },
+            jateng: {
+                labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'],
+                livebird: [21800, 22000, 22300, 22500, 22800, 23000, 23200],
+                karkas: [33000, 33500, 34000, 34200, 34800, 35000, 35500]
+            },
+            jatim: {
+                labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'],
+                livebird: [22000, 22200, 22500, 22700, 23000, 23400, 23500],
+                karkas: [33500, 34000, 34500, 34800, 35200, 35800, 36000]
+            },
+            sumatera: {
+                labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'],
+                livebird: [24000, 24200, 24500, 24300, 24800, 25000, 25200],
+                karkas: [36000, 36500, 37000, 36800, 37500, 38000, 38500]
+            }
+        };
+
+        function initChart() {
+            const ctx = document.getElementById('priceChart').getContext('2d');
+            priceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: chartDataSets.jawa.labels,
+                    datasets: [
+                        {
+                            label: 'Harga Livebird (Rp/kg)',
+                            data: chartDataSets.jawa.livebird,
+                            borderColor: '#16a34a',
+                            backgroundColor: 'rgba(22, 163, 74, 0.1)',
+                            fill: true,
+                            tension: 0.3,
+                            borderWidth: 2.5,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                        },
+                        {
+                            label: 'Harga Karkas Eceran (Rp/kg)',
+                            data: chartDataSets.jawa.karkas,
+                            borderColor: '#f59e0b',
+                            backgroundColor: 'transparent',
+                            borderDash: [5, 5],
+                            tension: 0.3,
+                            borderWidth: 2.5,
+                            pointRadius: 4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                            labels: {
+                                font: { family: 'Plus Jakarta Sans', size: 12 }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': Rp ' + context.parsed.y.toLocaleString('id-ID');
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return 'Rp ' + (value/1000) + 'k';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateChartData() {
+            const selectedRegion = document.getElementById('region-select').value;
+            const data = chartDataSets[selectedRegion];
+            priceChart.data.datasets[0].data = data.livebird;
+            priceChart.data.datasets[1].data = data.karkas;
+            priceChart.update();
+        }
+
+        // Profit Calculator Logic
+        function calculateProfit() {
+            const qty = parseFloat(document.getElementById('calc-qty').value) || 0;
+            const weight = parseFloat(document.getElementById('calc-weight').value) || 0;
+            const buyPrice = parseFloat(document.getElementById('calc-buy-price').value) || 0;
+            const sellPrice = parseFloat(document.getElementById('calc-sell-price').value) || 0;
+            const opsCost = parseFloat(document.getElementById('calc-ops-cost').value) || 0;
+            const shrinkage = parseFloat(document.getElementById('calc-shrinkage').value) || 0;
+
+            // Total initial weight
+            const initialTotalWeight = qty * weight;
+            // Net weight after shrinkage
+            const netWeight = initialTotalWeight * (1 - (shrinkage / 100));
+
+            // Costs & Revenue
+            const buyCost = initialTotalWeight * buyPrice;
+            const totalCost = buyCost + opsCost;
+            const grossRevenue = netWeight * sellPrice;
+            const netProfit = grossRevenue - totalCost;
+            const margin = grossRevenue > 0 ? ((netProfit / grossRevenue) * 100).toFixed(1) : 0;
+
+            // Update UI
+            document.getElementById('res-total-weight').innerText = netWeight.toLocaleString('id-ID', {maximumFractionDigits: 1}) + ' Kg';
+            document.getElementById('res-gross').innerText = 'Rp ' + Math.round(grossRevenue).toLocaleString('id-ID');
+            document.getElementById('res-total-cost').innerText = 'Rp ' + Math.round(totalCost).toLocaleString('id-ID');
+            document.getElementById('res-net-profit').innerText = 'Rp ' + Math.round(netProfit).toLocaleString('id-ID');
+            document.getElementById('res-margin').innerText = 'Margin Profit: ' + margin + '%';
+        }
+
+        // Form Submission Handling
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const alertBox = document.getElementById('form-alert');
+            
+            alertBox.className = "mb-4 p-4 rounded-xl text-xs font-semibold bg-emerald-100 text-brand-800 border border-emerald-200 block";
+            alertBox.innerText = "Terima kasih! Permintaan konsultasi pemasaran Anda berhasil dikirim. Tim kami akan menghubungi via WhatsApp dalam 1x24 jam.";
+
+            document.getElementById('consultationForm').reset();
+
+            setTimeout(() => {
+                alertBox.className = "hidden";
+            }, 5000);
+        }
+
+        // Init on page load
+        window.onload = function() {
+            initChart();
+            calculateProfit();
+        };
+    </script>
+</body>
+</html>
